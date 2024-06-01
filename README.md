@@ -11,13 +11,13 @@ The DEPI database manages students, instructors, departments, branches, courses,
 - **ER Diagram**: View `DEPI ER Diagram.pdf` for a high-level schema overview.
 - **Data Model**: Refer to `DEPI ER Diagram Data Model.pdf` for detailed entity descriptions and relationships.
 
-### Download
-[Download all files](./DEPI-DB-Project/ER%20Diagram.zip).
-
----
-
 For draw.io native files, check the repository.
 
 ---
 
 This concise documentation helps in understanding the DEPI database structure. For further details or modifications, please update the README file.
+
+## Team Members
+- Noha Gamal Salah
+- Ahmed Mohamed Ahmed
+- Ahmed Mohamed Maher
