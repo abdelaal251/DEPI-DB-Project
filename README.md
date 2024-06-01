@@ -1,11 +1,13 @@
-## DEPI ER Diagram Documentation
+# DEPI ER Diagram Documentation
+
+### Overview
+The DEPI database manages students, instructors, departments, branches, courses, exams, and related data. Key entities include User, Student, Department, Branch, Track, Intake, Course, Question, Instructor, CourseInstructor, Exam, ExamQuestion, StudentAssignedExam, and StudentAnswer.
+
 
 ### Files Included
 - `DEPI ER Diagram.pdf`: Visual representation of the ER diagram.
 - `DEPI ER Diagram Data Model.pdf`: Detailed data model with entities, attributes, and relationships.
-
-### Overview
-The DEPI database manages students, instructors, departments, branches, courses, exams, and related data. Key entities include User, Student, Department, Branch, Track, Intake, Course, Question, Instructor, CourseInstructor, Exam, ExamQuestion, StudentAssignedExam, and StudentAnswer.
+- `DEPI ER Diagram(Native).drawio`: Native draw.io file used to generate the diagrams
 
 ### Usage
 - **ER Diagram**: View `DEPI ER Diagram.pdf` for a high-level schema overview.
