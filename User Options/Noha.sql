@@ -1,3 +1,5 @@
+USE ExaminationSystem;
+GO
 --Procedures
 --Register a new student by inserting their details into the Student table & user table & UserAuth table
 
@@ -7,8 +9,7 @@ CREATE PROCEDURE RegisterStudent
     @FirstName VARCHAR(50),
     @LastName VARCHAR(50),
     @Email VARCHAR(100),
-	@Password VARCHAR(50),
-    @Role VARCHAR(50)
+    @Password VARCHAR(50)
 AS
 BEGIN
     
@@ -16,13 +17,12 @@ BEGIN
     VALUES (@StudentId, @IntakeId);
 
     INSERT INTO [User] (UserId, FirstName, LastName, Email, Role, Type)
-    VALUES (@StudentId, @FirstName, @LastName, @Email, @Role, 'Student');
+    VALUES (@StudentId, @FirstName, @LastName, @Email, 'User', 'Student');
 	 
     INSERT INTO UserAuth (UserId, Password)
     VALUES (@StudentId, @Password)
 
 END
-
 GO
 --Assign a student to an exam by inserting a record into the StudentAssignedExam table
 
