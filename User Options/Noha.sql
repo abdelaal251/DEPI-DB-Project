@@ -1,4 +1,4 @@
-USE ExaminationSystem;
+USE ExSys;
 GO
 --Procedures
 --Register a new student by inserting their details into the Student table & user table & UserAuth table
@@ -12,16 +12,20 @@ CREATE PROCEDURE RegisterStudent
     @Password VARCHAR(50)
 AS
 BEGIN
-    
-    INSERT INTO Student (StudentId, IntakeId)
-    VALUES (@StudentId, @IntakeId);
+    DECLARE @HashedPassword VARCHAR(256);
+    SET @HashedPassword = CONVERT(VARCHAR(256), HASHBYTES('SHA2_256', @Password), 2);
 
-    INSERT INTO [User] (UserId, FirstName, LastName, Email, Role, Type)
-    VALUES (@StudentId, @FirstName, @LastName, @Email, 'User', 'Student');
-	 
-    INSERT INTO UserAuth (UserId, Password)
-    VALUES (@StudentId, @Password)
+	-- Insert into User table
+	INSERT INTO [User] (FirstName, LastName, Email, Role) VALUES 
+	(@FirstName, @LastName, @Email, 'Student')
 
+	-- Insert into Student table
+	INSERT INTO Student (StudentId, IntakeId) VALUES 
+	((SELECT UserId FROM [User] WHERE Email = @Email), @IntakeId)
+
+	-- Insert into UserAuth Table
+	INSERT INTO UserAuth (UserId, Password)
+    VALUES ((SELECT UserId FROM [User] WHERE Email = @Email), @HashedPassword)
 END
 GO
 --Assign a student to an exam by inserting a record into the StudentAssignedExam table
@@ -62,17 +66,18 @@ CREATE PROCEDURE UpdateStudentDetails
 	@Password VARCHAR(50)
 AS
 BEGIN
-
+    DECLARE @HashedPassword VARCHAR(256);
+    SET @HashedPassword = CONVERT(VARCHAR(256), HASHBYTES('SHA2_256', @Password), 2);
     UPDATE Student
     SET IntakeId = @IntakeId
     WHERE StudentId = @StudentId
 
     UPDATE [User]
     SET FirstName = @FirstName, LastName = @LastName, Email = @Email
-    WHERE UserId = @StudentId AND Type = 'Student'
+    WHERE UserId = @StudentId AND role = 'Student'
 
     UPDATE UserAuth
-    SET Password = @Password
+    SET Password = @HashedPassword
     WHERE UserId = @StudentId
 END
 GO
@@ -91,7 +96,7 @@ BEGIN
     WHERE UserId = @StudentId
 
     DELETE FROM [User]
-    WHERE UserId = @StudentId AND Type = 'Student'
+    WHERE UserId = @StudentId AND role = 'Student'
 
     DELETE FROM Student
     WHERE StudentId = @StudentId

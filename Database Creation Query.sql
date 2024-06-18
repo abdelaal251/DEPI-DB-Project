@@ -1,7 +1,4 @@
-CREATE DATABASE ExaminationSystem;
-go
-
-USE ExaminationSystem;
+USE ExSys;
 GO
 
 -- Departement Table
@@ -46,8 +43,7 @@ CREATE TABLE [User] (
     FirstName VARCHAR(255),
     LastName VARCHAR(255),
     Email VARCHAR(255),
-    Role VARCHAR(50),
-    Type VARCHAR(50)
+    Role VARCHAR(50)
 );
 GO
 
@@ -82,8 +78,9 @@ GO
 
 -- Student Table
 CREATE TABLE Student (
-    StudentId INT PRIMARY KEY IDENTITY(1,1),
+    StudentId INT PRIMARY KEY,
     IntakeId INT,
+    FOREIGN KEY (StudentId) REFERENCES [User](UserId),
     FOREIGN KEY (IntakeId) REFERENCES Intake(IntakeId)
 );
 GO
@@ -148,6 +145,7 @@ CREATE TABLE StudentAnswer (
 );
 GO
 
+-- QuestionChoices Table
 CREATE TABLE QuestionChoices (
     QuestionChoiceId INT PRIMARY KEY IDENTITY(1,1),
     QuestionId INT,
@@ -155,4 +153,3 @@ CREATE TABLE QuestionChoices (
     FOREIGN KEY (QuestionId) REFERENCES Question(QuestionId)
 );
 GO
-
