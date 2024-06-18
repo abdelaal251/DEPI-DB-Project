@@ -6,7 +6,7 @@ CREATE PROCEDURE CreateExam
     @EndTime DATETIME,
     @IntakeId INT,
     @CourseInstructorId INT
-with encryption 
+ 
 as
 BEGIN
     INSERT INTO Exam (ExamType, StartTime, EndTime, IntakeId, CourseInstructorId)
@@ -19,7 +19,7 @@ CREATE PROCEDURE AddQuestionsToExam
     @ExamId INT,
     @QuestionId INT,
     @QuestionDegree INT
-with encryption
+
 as
 BEGIN
     INSERT INTO ExamQuestion (ExamId, QuestionId, QuestionDegree)
@@ -30,14 +30,14 @@ GO
 
 -- record student answer
 CREATE PROCEDURE RecordStudentAnswers
-    @Studentwith encryption assignedExamId INT,
+    @StudentAssignedExamId INT,
     @ExamQuestionId INT,
     @StudentAnswerContent TEXT
-with encryption 
+ 
 as
 BEGIN
-    INSERT INTO StudentAnswer (Studentwith encryption assignedExamId, ExamQuestionId, StudentAnswerContent)
-    VALUES (@Studentwith encryption assignedExamId, @ExamQuestionId, @StudentAnswerContent);
+    INSERT INTO StudentAnswer (StudentAssignedExamId, ExamQuestionId, StudentAnswerContent)
+    VALUES (@StudentAssignedExamId, @ExamQuestionId, @StudentAnswerContent);
 END;
 GO
 
@@ -47,7 +47,7 @@ Create PROCEDURE UpdateExamDetails
     @ExamType VARCHAR(50),
     @StartTime DATETIME,
     @EndTime DATETIME
-with encryption
+
 AS
 BEGIN
     UPDATE Exam
@@ -60,14 +60,13 @@ GO
 
 
 -- Register new user
-Alter PROCEDURE RegisterUser
+Create PROCEDURE RegisterUser
     @FirstName VARCHAR(255),
     @LastName VARCHAR(255),
     @Email VARCHAR(255),
     @Role VARCHAR(50),
-    @Type VARCHAR(50),
     @Password VARCHAR(255)
-with encryption
+
 AS
 BEGIN
     DECLARE @UserId INT;
@@ -75,8 +74,8 @@ BEGIN
 
     SET @HashedPassword = CONVERT(VARCHAR(256), HASHBYTES('SHA2_256', @Password), 2);
 
-    INSERT INTO [User] (FirstName, LastName, Email, Role, Type)
-    VALUES (@FirstName, @LastName, @Email, @Role, @Type);
+    INSERT INTO [User] (FirstName, LastName, Email, Role)
+    VALUES (@FirstName, @LastName, @Email, @Role);
 
     SET @UserId = SCOPE_IDENTITY();
 
@@ -129,17 +128,15 @@ CREATE PROCEDURE UpdateUserInfo
     @FirstName VARCHAR(255),
     @LastName VARCHAR(255),
     @Email VARCHAR(255),
-    @Role VARCHAR(50),
-    @Type VARCHAR(50)
-With Encryption
+    @Role VARCHAR(50)
+
 AS
 BEGIN
     UPDATE [User]
     SET FirstName = @FirstName,
         LastName = @LastName,
         Email = @Email,
-        Role = @Role,
-        Type = @Type
+        Role = @Role
     WHERE UserId = @UserId;
 END;
 GO
@@ -147,7 +144,7 @@ GO
 -- Delete users 
 CREATE PROCEDURE DeleteUser
     @UserId INT
-With Encryption
+
 AS
 BEGIN
     -- Deleting the user authentication details
