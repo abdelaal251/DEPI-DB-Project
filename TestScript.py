@@ -36,7 +36,7 @@ results = []
 def test_procedure_function(cursor, name):
     try:
         if name == 'RegisterUser':
-            cursor.execute("{CALL RegisterUser('John', 'Doe', 'john.doe@example.com', 'Student', 'FullTime', 'password123')}")
+            cursor.execute("{CALL RegisterUser('John', 'Doe', 'john.doe@example.com', 'Student', 'password123')}")
         elif name == 'AuthenticateUser':
             cursor.execute("SELECT dbo.AuthenticateUser('john.doe@example.com', 'password123')")
         elif name == 'UpdateUserInfo':
