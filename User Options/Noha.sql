@@ -151,4 +151,101 @@ FROM
 	ON eq.QuestionId = q.QuestionId
     JOIN StudentAnswer sc 
 	ON eq.ExamQuestionId = sc.ExamQuestionId AND sa.StudentAssignedExamId = sc.StudentAssignedExamId
+GO 
+--Add a new branch to the Branch table with its details
+CREATE PROCEDURE AddNewBranch
+    @BranchName VARCHAR(100),
+    @DepartementId INT
+AS
+BEGIN
+    INSERT INTO Branch (BranchName, DepartementId)
+    VALUES (@BranchName, @DepartementId)
+END
+GO
+--test 
+EXEC AddNewBranch 'Project Mangement', 2
+GO
+-- edit an existing branch details
+CREATE PROCEDURE EditBranch
+    @BranchId INT,
+    @BranchName VARCHAR(100),
+    @DepartementId INT
+AS
+BEGIN
+    UPDATE Branch
+    SET BranchName = @BranchName,
+        DepartementId = @DepartementId
+    WHERE BranchId = @BranchId
+END
+GO
+--test
+EXEC EditBranch 6, 'Game Development', 1
+Go 
+
+--Add a new track to the Track table with its details
+CREATE PROCEDURE AddNewTrack
+    @TrackName VARCHAR(100),
+    @BranchId INT
+AS
+BEGIN
+    INSERT INTO Track (TrackName, BranchId)
+    VALUES (@TrackName, @BranchId)
+END
+GO
+--test
+EXEC AddNewTrack 'Web Development ', 3
+GO
+-- edit an existing track details
+CREATE PROCEDURE EditTrack
+    @TrackId INT,
+    @TrackName VARCHAR(100),
+    @BranchId INT
+AS
+BEGIN
+    UPDATE Track
+    SET TrackName = @TrackName,
+        BranchId = @BranchId
+    WHERE TrackId = @TrackId
+END
+GO
+--test
+EXEC EditTrack 1, 'Full Stack Development using ASP.NET', 1
+Go
+
+-- Add a new intake to the Intake table with its details
+CREATE PROCEDURE AddNewIntake
+    @IntakeName VARCHAR(100),
+    @StartDate DATE,
+    @EndDate DATE,
+    @TrackId INT
+AS
+BEGIN
+    INSERT INTO Intake (IntakeName, StartDate, EndDate, TrackId)
+    VALUES (@IntakeName, @StartDate, @EndDate, @TrackId)
+END
+GO
+--test
+EXEC AddNewIntake 'Fall 2024', '2024-09-01', '2024-12-20', 1
+GO
+
+-- Edit intake details like start date or end date
+CREATE PROCEDURE EditIntake
+    @IntakeId INT,
+    @IntakeName VARCHAR(100),
+    @StartDate DATE,
+    @EndDate DATE,
+    @TrackId INT
+AS
+BEGIN
+
+    UPDATE Intake
+    SET IntakeName = @IntakeName,
+        StartDate = @StartDate,
+        EndDate = @EndDate,
+        TrackId = @TrackId
+    WHERE IntakeId = @IntakeId
+END
+GO
+--tast
+EXEC EditIntake 1, 'Fall 2023', '2023-09-1', '2023-12-20', 1
 
