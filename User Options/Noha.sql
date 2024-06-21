@@ -247,29 +247,28 @@ WHERE CourseName = 'Database Systems' AND QuestionType = 'Essay'
 Go
 
 --Display the results of exams for students, including the questions, correct answers, and student answers
-CREATE VIEW ViewExamResultsForStudents AS
-SELECT
-    e.ExamId,
-    s.StudentId,
-    u.FirstName, u.LastName,
-    q.QuestionName, q.QuestionCorrectAnswer,
-    sa.StudentAnswerContent
-FROM StudentAnswer sa JOIN ExamQuestion eq 
-ON sa.ExamQuestionId = eq.ExamQuestionId
-JOIN Question q 
-ON eq.QuestionId = q.QuestionId
-JOIN StudentAssignedExam sae 
-ON sa.StudentAssignedExamId = sae.StudentAssignedExamId
-JOIN Exam e 
-ON sae.ExamId = e.ExamId
-JOIN Student s ON sae.StudentId = s.StudentId
-JOIN [User] u 
-ON s.StudentId = u.UserId
+CREATE VIEW StudentExamResults AS
+SELECT 
+	e.ExamId,
+	s.StudentId,
+	u.FirstName + ' ' + u.LastName AS FullName,
+	e.ExamType, e.StartTime, 
+	SUM(CASE WHEN CAST(sa.StudentAnswerContent AS VARCHAR(MAX)) = CAST(q.QuestionCorrectAnswer AS VARCHAR(MAX)) 
+	THEN eq.QuestionDegree ELSE 0 END) * 100.0 / SUM(eq.QuestionDegree) AS Percentage
+FROM     
+	dbo.StudentAnswer sa INNER JOIN dbo.ExamQuestion eq 
+	ON sa.ExamQuestionId = eq.ExamQuestionId INNER JOIN dbo.Question q
+	ON eq.QuestionId = q.QuestionId INNER JOIN dbo.StudentAssignedExam sae 
+	ON sa.StudentAssignedExamId = sae.StudentAssignedExamId INNER JOIN dbo.Exam  e
+	ON sae.ExamId = e.ExamId INNER JOIN dbo.Student s 
+	ON sae.StudentId = s.StudentId INNER JOIN dbo.[User] u 
+	ON s.StudentId = u.UserId
+	GROUP BY e.ExamId, s.StudentId, u.FirstName, u.LastName, e.ExamType, e.StartTime
 GO
 --test this view
 SELECT *
-FROM ViewExamResultsForStudents
-WHERE StudentId = 5
+FROM StudentExamResults
+WHERE ExamId=2
 GO
 
 
