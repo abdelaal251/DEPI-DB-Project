@@ -47,6 +47,7 @@ We used a Python script to generate SQL queries that grant or deny specific user
 2. **Generate SQL**: Create SQL statements to grant or deny permissions according to the CSV data.
 3. **Execute SQL**: Run the generated SQL statements to apply the permissions in the ExSys database.
 A sample from the CSV source can be found below
+
 | Procedure      | Admin1 | TrainingManager1 | Instructor1 | Student1 |
 |----------------|--------|------------------|-------------|----------|
 | RegisterUser   | GRANT  | DENY             | DENY        | DENY     |
