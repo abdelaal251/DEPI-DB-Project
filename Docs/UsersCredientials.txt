@@ -1,0 +1,6 @@
+### Users and passwords
+User NameAdmin1 WITH PASSWORD = 'P@ssw0rd'
+User NameTrainingManager1 WITH PASSWORD = 'P@ssw0rd'
+User NameInstructor1 WITH PASSWORD = 'P@ssw0rd'
+User NameStudent1 WITH PASSWORD = 'P@ssw0rd'
+

@@ -1,0 +1,76 @@
+-- Add a Student Answer using existing IDs
+INSERT INTO dbo.StudentAnswer (StudentAssignedExamId, ExamQuestionId, StudentAnswerContent)
+VALUES (1, 1, 'Sample Answer');
+
+-- Call to AddNewBranch
+EXEC dbo.AddNewBranch 'Software Engineering', 1;
+
+-- Call to AddNewCourse
+EXEC dbo.AddNewCourse 'Math 101', 'Basic Math Course', 100, 60;
+
+-- Call to AddNewIntake
+EXEC dbo.AddNewIntake 'Fall 2024', '2024-09-01', '2024-12-31', 1;
+
+-- Call to AddNewTrack
+EXEC dbo.AddNewTrack 'Artificial Intelligence', 1;
+
+-- Call to AddQuestionsToExam
+EXEC dbo.AddQuestionsToExam 1, 1, 10;
+
+-- Call to AssignInstructorToCourse
+EXEC dbo.AssignInstructorToCourse 1, 1, 2024;
+
+-- Call to AssignStudentToExam
+EXEC dbo.AssignStudentToExam 1, 1, '2024-06-15 10:00:00', '2024-06-15 12:00:00';
+
+-- Call to CreateExam
+EXEC dbo.CreateExam 'Final', '2024-06-15 10:00:00', '2024-06-15 12:00:00', 'OpenBook', 1, 1;
+
+-- Call to DeleteBranch
+EXEC dbo.DeleteBranch 1;
+
+-- Call to DeleteCourse
+EXEC dbo.DeleteCourse 1;
+
+-- Call to DeleteExam
+EXEC dbo.DeleteExam 1;
+
+-- Call to DeleteStudent
+EXEC dbo.DeleteStudent 1;
+
+-- Call to DeleteUser
+EXEC dbo.DeleteUser 1;
+
+-- Call to EditBranch
+EXEC dbo.EditBranch 1, 'Network Engineering', 1;
+
+-- Call to EditIntake
+EXEC dbo.EditIntake 1, 'Spring 2024', '2024-01-01', '2024-04-30', 1;
+
+-- Call to EditTrack
+EXEC dbo.EditTrack 1, 'Cybersecurity', 1;
+
+-- Call to RecordStudentAnswers
+INSERT INTO dbo.StudentAnswer (StudentAssignedExamId, ExamQuestionId, StudentAnswerContent)
+VALUES (2, 2, 'Sample Answer');
+
+-- Call to RegisterStudent
+EXEC dbo.RegisterStudent 1;
+
+-- Call to RegisterUser
+EXEC dbo.RegisterUser 'John', 'Doe', 'john.doe@example.com', 'Student', 'FullTime', 'password123';
+
+-- Call to UpdateCourseDetails
+EXEC dbo.UpdateCourseDetails 1, 'Math 102', 'Intermediate Math Course', 100, 60;
+
+-- Call to UpdateExamDetails
+EXEC dbo.UpdateExamDetails 1, 'Midterm', '2024-06-20 10:00:00', '2024-06-20 12:00:00', 'ClosedBook';
+
+-- Call to UpdateStudentDetails
+EXEC dbo.UpdateStudentDetails 1, 'Updated Details';
+
+-- Call to UpdateUserInfo
+EXEC dbo.UpdateUserInfo 1, 'John', 'Doe', 'john.doe@example.com', 'Student', 'PartTime';
+
+-- Call to AuthenticateUser
+SELECT dbo.AuthenticateUser('john.doe@example.com', 'password123');

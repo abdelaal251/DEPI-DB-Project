@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the CSV file
-file_path = 'user permisssions.csv'
+file_path = 'userPermisssions.csv'
 permissions_df = pd.read_csv(file_path)
 
 # Function to generate SQL statements
