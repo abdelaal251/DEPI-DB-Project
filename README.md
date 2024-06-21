@@ -45,17 +45,13 @@ The ExSys database system is designed to handle various academic and administrat
 
 ### Deliverables
 - [System Requirement Sheet](Docs/System_Requirements_Sheet.pdf)
-- [Data Model PDF](files/DEPI_ER_Diagram_Data_Model.pdf)
-- [Draw.io Native File](files/DEPI_ER_Diagram(Native).drawio)
-- [Script File](files/test_queries.sql)
-- [Python Test Script](files/python_test_script.py)
-- [CSV File](files/user_permissions.csv)
-- [Excel Test Results](files/procedure_function_test_results.xlsx)
-
-### How to Add File Paths for Downloads
-1. **Locate the File**: Ensure the file is in your repository or server.
-2. **Copy the Path**: Copy the relative path from your repository root to the file.
-3. **Add to Markdown**: Use the `[description](path/to/file)` format to create a link.
+- [System ER Diagram](Docs/ER-Diagram.jpg)
+- [DataBase Mapping](Docs/DataMapping.jpg)
+- [Native Diagram File](Docs/Native-diagrams.drawio)
+- [Database Files](Database_Queries)
+- [Objects Description with team tasks](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
+- [Database users](Docs/UsersCredientials.txt)
+- [Test Sheet](SystemTest/procedure_function_test_results.xlsx)
 
 ### Testing
 The overall testing technique involved using Python to automate the testing of all stored procedures and functions within the ExSys database. The Python script executed each procedure/function and logged the results, indicating success or failure for each user role.
