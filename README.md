@@ -42,11 +42,11 @@ The ExSys database system is designed to handle various academic and administrat
 - [System Requirement Sheet](Docs/System_Requirements_Sheet.pdf)
 - [System ER Diagram](Docs/ER-Diagram.jpg)
 - [DataBase Mapping](Docs/DataMapping.jpg)
-- [Native Diagram File](Docs/Native-diagrams.drawio)
+- [Native Diagram File(draw.io)](Docs/Native-diagrams.drawio)
 - [Database Files](DatabaseQueries)
-- [Objects Description with team tasks](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
+- [Objects Description with team tasks (EXCEL)](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
 - [Database users](Docs/UsersCredientials.txt)
-- [Test Sheet](SystemTest/procedure_function_test_results.xlsx)
+- [Test Sheet (EXCEL)](SystemTest/procedure_function_test_results.xlsx)
 
 ### Testing
 The overall testing technique involved using Python to automate the testing of all stored procedures and functions within the ExSys database. The Python script executed each procedure/function and logged the results, indicating success or failure for each user role.
