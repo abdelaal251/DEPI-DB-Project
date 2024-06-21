@@ -44,7 +44,7 @@ The ExSys database system is designed to handle various academic and administrat
    - **AssignStudentToExam**: Assigns students to exams.
 
 ### Deliverables
-- [ER Diagram PDF](files/DEPI_ER_Diagram.pdf)
+- [ER Diagram PDF](DEPI-DB-Project/TestScript.py)
 - [Data Model PDF](files/DEPI_ER_Diagram_Data_Model.pdf)
 - [Draw.io Native File](files/DEPI_ER_Diagram(Native).drawio)
 - [Script File](files/test_queries.sql)
