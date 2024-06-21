@@ -3,11 +3,6 @@
 ### Overview
 The ExSys database manages students, instructors, departments, branches, courses, exams, and related data. Key entities include User, Student, Department, Branch, Track, Intake, Course, Question, Instructor, CourseInstructor, Exam, ExamQuestion, StudentAssignedExam, and StudentAnswer.
 
-### Files Included
-- `DEPI ER Diagram.pdf`: Visual representation of the ER diagram.
-- `DEPI ER Diagram Data Model.pdf`: Detailed data model with entities, attributes, and relationships.
-- `DEPI ER Diagram(Native).drawio`: Native draw.io file used to generate the diagrams
-
 ### Usage
 The ExSys database system is designed to handle various academic and administrative tasks:
 
@@ -48,7 +43,7 @@ The ExSys database system is designed to handle various academic and administrat
 - [System ER Diagram](Docs/ER-Diagram.jpg)
 - [DataBase Mapping](Docs/DataMapping.jpg)
 - [Native Diagram File](Docs/Native-diagrams.drawio)
-- [Database Files](Database_Queries)
+- [Database Files](DatabaseQueries)
 - [Objects Description with team tasks](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
 - [Database users](Docs/UsersCredientials.txt)
 - [Test Sheet](SystemTest/procedure_function_test_results.xlsx)
