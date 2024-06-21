@@ -9,10 +9,39 @@ The ExSys database manages students, instructors, departments, branches, courses
 - `DEPI ER Diagram(Native).drawio`: Native draw.io file used to generate the diagrams
 
 ### Usage
-- **ER Diagram**: View `DEPI ER Diagram.pdf` for a high-level schema overview.
-- **Data Model**: Refer to `DEPI ER Diagram Data Model.pdf` for detailed entity descriptions and relationships.
+The ExSys database system is designed to handle various academic and administrative tasks:
 
-For draw.io native files, check the repository.
+1. **User Management**:
+   - **RegisterUser**: Registers new users (students, instructors, admins).
+   - **AuthenticateUser**: Authenticates users for login.
+   - **UpdateUserInfo**: Updates user information.
+   - **DeleteUser**: Deletes a user from the system.
+
+2. **Course Management**:
+   - **AddNewCourse**: Adds new courses to the system.
+   - **AssignInstructorToCourse**: Assigns instructors to courses.
+   - **UpdateCourseDetails**: Updates course details.
+   - **DeleteCourse**: Deletes a course from the system.
+
+3. **Exam Management**:
+   - **CreateExam**: Creates a new exam.
+   - **AddQuestionsToExam**: Adds questions to an exam.
+   - **UpdateExamDetails**: Updates exam details.
+   - **DeleteExam**: Deletes an exam.
+   - **RecordStudentAnswers**: Records student answers for exams.
+
+4. **Department, Branch, and Track Management**:
+   - **AddNewBranch**: Adds a new branch.
+   - **EditBranch**: Edits details of a branch.
+   - **AddNewTrack**: Adds a new track.
+   - **EditTrack**: Edits details of a track.
+   - **AddNewIntake**: Adds a new intake period.
+   - **EditIntake**: Edits details of an intake period.
+
+5. **Student Management**:
+   - **RegisterStudent**: Registers a student for an intake.
+   - **UpdateStudentDetails**: Updates student details.
+   - **AssignStudentToExam**: Assigns students to exams.
 
 ### Deliverables
 - [ER Diagram PDF](files/DEPI_ER_Diagram.pdf)
