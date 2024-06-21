@@ -44,7 +44,7 @@ The ExSys database system is designed to handle various academic and administrat
    - **AssignStudentToExam**: Assigns students to exams.
 
 ### Deliverables
-- [System Requirement Sheet](Docs/System Requirements Sheet.pdf)
+- [System Requirement Sheet]('Docs/System_Requirements_Sheet.pdf)
 - [Data Model PDF](files/DEPI_ER_Diagram_Data_Model.pdf)
 - [Draw.io Native File](files/DEPI_ER_Diagram(Native).drawio)
 - [Script File](files/test_queries.sql)
