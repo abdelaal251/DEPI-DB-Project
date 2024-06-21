@@ -44,8 +44,7 @@ The ExSys database system is designed to handle various academic and administrat
 - [DataBase Mapping](Docs/DataMapping.jpg)
 - [Native Diagram File(draw.io)](Docs/Native-diagrams.drawio)
 - [Database Files](DatabaseQueries)
-- [Objects Descriptions (EXCEL) ](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
-- [Team tasks (EXCEL)](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
+- [Objects Descriptions (EXCEL) ](ObjectsDescriptions/Procedures_Functions_Views_Tasks.xlsx)
 - [Database users](Docs/UsersCredientials.txt)
 - [Test Sheet (EXCEL)](SystemTest/procedure_function_test_results.xlsx)
 
@@ -77,8 +76,3 @@ A sample from the CSV source can be found below
 The script ensures that each user's access is correctly configured based on their role and the defined permissions in the CSV file.
 
 For further details or modifications, please update the README file.
-
-## Team Members
-- Noha Gamal Salah
-- Ahmed Mohamed Ahmed Abdelaal
-- Ahmed Mohamed Maher
