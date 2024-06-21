@@ -44,7 +44,8 @@ The ExSys database system is designed to handle various academic and administrat
 - [DataBase Mapping](Docs/DataMapping.jpg)
 - [Native Diagram File(draw.io)](Docs/Native-diagrams.drawio)
 - [Database Files](DatabaseQueries)
-- [Objects Description with team tasks (EXCEL)](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
+- [Objects Descriptions (EXCEL) ](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
+- [Team tasks (EXCEL)](TeamTasks/Procedures_Functions_Views_Tasks.xlsx)
 - [Database users](Docs/UsersCredientials.txt)
 - [Test Sheet (EXCEL)](SystemTest/procedure_function_test_results.xlsx)
 
