@@ -15,15 +15,12 @@ BEGIN
     DECLARE @HashedPassword VARCHAR(256);
     SET @HashedPassword = CONVERT(VARCHAR(256), HASHBYTES('SHA2_256', @Password), 2);
 
-	-- Insert into User table
 	INSERT INTO [User] (FirstName, LastName, Email, Role) VALUES 
 	(@FirstName, @LastName, @Email, 'Student')
 
-	-- Insert into Student table
 	INSERT INTO Student (StudentId, IntakeId) VALUES 
 	((SELECT UserId FROM [User] WHERE Email = @Email), @IntakeId)
 
-	-- Insert into UserAuth Table
 	INSERT INTO UserAuth (UserId, Password)
     VALUES ((SELECT UserId FROM [User] WHERE Email = @Email), @HashedPassword)
 END
@@ -152,6 +149,8 @@ FROM
     JOIN StudentAnswer sc 
 	ON eq.ExamQuestionId = sc.ExamQuestionId AND sa.StudentAssignedExamId = sc.StudentAssignedExamId
 GO 
+	    
+	    --------------------------------Procedures-----------------------------------------------------------------------------
 --Add a new branch to the Branch table with its details
 CREATE PROCEDURE AddNewBranch
     @BranchName VARCHAR(100),
