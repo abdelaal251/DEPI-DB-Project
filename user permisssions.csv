@@ -1,0 +1,22 @@
+Procedure / Function,Admin1,TrainingManager1,Instructor1,Student1
+RegisterUser,GRANT,DENY,DENY,DENY
+AuthenticateUser,GRANT,DENY,DENY,DENY
+UpdateUserInfo,DENY,DENY,DENY,DENY
+DeleteUser,GRANT,DENY,DENY,DENY
+AddNewCourse,GRANT,DENY,DENY,DENY
+AssignInstructorToCourse,DENY,DENY,DENY,DENY
+UpdateCourseDetails,GRANT,DENY,DENY,DENY
+DeleteCourse,GRANT,DENY,DENY,DENY
+CreateExam,DENY,DENY,GRANT,DENY
+AddQuestionsToExam,DENY,DENY,GRANT,DENY
+RecordStudentAnswers,DENY,DENY,DENY,GRANT
+UpdateExamDetails,DENY,DENY,GRANT,DENY
+DeleteExam,GRANT,DENY,DENY,DENY
+AddNewBranch,DENY,GRANT,DENY,DENY
+EditBranch,DENY,GRANT,DENY,DENY
+AddNewTrack,DENY,GRANT,DENY,DENY
+EditTrack,DENY,GRANT,DENY,DENY
+AddNewIntake,DENY,GRANT,DENY,DENY
+EditIntake,DENY,GRANT,DENY,DENY
+RegisterStudent,DENY,GRANT,DENY,DENY
+UpdateStudentDetails,DENY,GRANT,DENY,DENY
