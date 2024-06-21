@@ -101,56 +101,6 @@ BEGIN
 END
 GO
 
---Views
---Display students filtered by their intake or track
-
-CREATE VIEW SearchStudentsByIntakeOrTrack
-AS
-SELECT
-    s.StudentId,
-    u.FirstName,u.LastName,u.Email,
-    i.IntakeName,
-    t.TrackName
-FROM
-    [User] u,
-	Student s JOIN Intake i 
-	ON s.IntakeId = i.IntakeId
-    JOIN Track t 
-	ON i.TrackId = t.TrackId
-GO 
-
---Display questions filtered by the course they belong to or the type of question
-
-CREATE VIEW SearchQuestionsByCourseOrType
-AS
-SELECT
-    q.QuestionId, q.QuestionName, q.QuestionDetails, q.QuestionType, q.QuestionCorrectAnswer, q.CourseMinDegree,
-    c.CourseName
-FROM
-    Question q JOIN Course c 
-	ON q.CourseId = c.CourseId
-GO
-
---Display the results of exams for students, including the questions, correct answers, and student answers
-CREATE VIEW ViewExamResultsForStudents
-AS
-SELECT
-    sa.StudentAssignedExamId,
-    e.ExamType, e.StartTime, e.EndTime,
-    q.QuestionName, q.QuestionCorrectAnswer,
-    sc.StudentAnswerContent
-FROM
-    StudentAssignedExam sa JOIN Exam e 
-	ON sa.ExamId = e.ExamId
-    JOIN ExamQuestion eq 
-	ON sa.ExamId = eq.ExamId
-    JOIN Question q 
-	ON eq.QuestionId = q.QuestionId
-    JOIN StudentAnswer sc 
-	ON eq.ExamQuestionId = sc.ExamQuestionId AND sa.StudentAssignedExamId = sc.StudentAssignedExamId
-GO 
-	    
-	    --------------------------------Procedures-----------------------------------------------------------------------------
 --Add a new branch to the Branch table with its details
 CREATE PROCEDURE AddNewBranch
     @BranchName VARCHAR(100),
@@ -164,6 +114,8 @@ GO
 --test 
 EXEC AddNewBranch 'Project Mangement', 2
 GO
+
+
 -- edit an existing branch details
 CREATE PROCEDURE EditBranch
     @BranchId INT,
@@ -180,6 +132,7 @@ GO
 --test
 EXEC EditBranch 6, 'Game Development', 1
 Go 
+ 
 
 --Add a new track to the Track table with its details
 CREATE PROCEDURE AddNewTrack
@@ -193,7 +146,9 @@ END
 GO
 --test
 EXEC AddNewTrack 'Web Development ', 3
-GO
+GO 
+
+
 -- edit an existing track details
 CREATE PROCEDURE EditTrack
     @TrackId INT,
@@ -210,6 +165,7 @@ GO
 --test
 EXEC EditTrack 1, 'Full Stack Development using ASP.NET', 1
 Go
+ 
 
 -- Add a new intake to the Intake table with its details
 CREATE PROCEDURE AddNewIntake
@@ -226,6 +182,8 @@ GO
 --test
 EXEC AddNewIntake 'Fall 2024', '2024-09-01', '2024-12-20', 1
 GO
+
+
 
 -- Edit intake details like start date or end date
 CREATE PROCEDURE EditIntake
@@ -247,4 +205,71 @@ END
 GO
 --tast
 EXEC EditIntake 1, 'Fall 2023', '2023-09-1', '2023-12-20', 1
+   
+
+
+--Views
+--Display students filtered by their intake or track
+
+CREATE VIEW SearchStudentsByIntakeOrTrack
+AS
+SELECT
+    s.StudentId,
+    u.FirstName,u.LastName,u.Email,
+    i.IntakeName,
+    t.TrackName
+FROM Student s JOIN Intake i ON s.IntakeId = i.IntakeId
+    JOIN Track t ON i.TrackId = t.TrackId
+	,[User] u WHERE u.UserId=s.StudentId
+
+GO 
+--test this view
+SELECT *
+FROM SearchStudentsByIntakeOrTrack
+WHERE IntakeName = 'Fall 2023'
+GO
+
+--Display questions filtered by the course they belong to or the type of question
+
+CREATE VIEW SearchQuestionsByCourseOrType
+AS
+SELECT
+    q.QuestionId, q.QuestionName, q.QuestionDetails, q.QuestionType, q.QuestionCorrectAnswer, q.CourseMinDegree,
+    c.CourseName
+FROM
+    Question q JOIN Course c 
+	ON q.CourseId = c.CourseId
+GO
+--test this view
+SELECT *
+FROM SearchQuestionsByCourseOrType
+WHERE CourseName = 'Database Systems' AND QuestionType = 'Essay'
+Go
+
+--Display the results of exams for students, including the questions, correct answers, and student answers
+CREATE VIEW ViewExamResultsForStudents AS
+SELECT
+    e.ExamId,
+    s.StudentId,
+    u.FirstName, u.LastName,
+    q.QuestionName, q.QuestionCorrectAnswer,
+    sa.StudentAnswerContent
+FROM StudentAnswer sa JOIN ExamQuestion eq 
+ON sa.ExamQuestionId = eq.ExamQuestionId
+JOIN Question q 
+ON eq.QuestionId = q.QuestionId
+JOIN StudentAssignedExam sae 
+ON sa.StudentAssignedExamId = sae.StudentAssignedExamId
+JOIN Exam e 
+ON sae.ExamId = e.ExamId
+JOIN Student s ON sae.StudentId = s.StudentId
+JOIN [User] u 
+ON s.StudentId = u.UserId
+GO
+--test this view
+SELECT *
+FROM ViewExamResultsForStudents
+WHERE StudentId = 5
+GO
+
 
